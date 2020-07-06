@@ -1,0 +1,28 @@
+// We use Stete instead of props beacuse we are working with a form and usually each piece of a form has his own state
+import React, {useState} from 'react'
+
+function Search({getQuery}) {
+
+    const [text, setText] = useState("");
+    const onChange = (q) => {
+        setText(q)
+        getQuery(q)
+    }
+
+    return (
+        <section className="search">
+            <form>
+                <input type = "text" 
+                className="form-control" 
+                placeholder="Search Characters" 
+                value = {text}
+                onChange= {(e)=> {
+                    onChange(e.target.value)
+                }}
+                autoFocus />
+            </form>
+        </section>
+    )
+}
+
+export default Search
